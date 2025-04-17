@@ -75,6 +75,10 @@ jobs:
         with:
           name: discord-notifier
 
+      - name: Rename artifact
+        run: |
+          mv bin/discord_notifier.out discord_notifier_${{ env.VERSION }}_linux_amd64
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
         env:
@@ -85,4 +89,4 @@ jobs:
           draft: false
           prerelease: false
           files: |
-            bin/discord_notifier.out#discord_notifier_${{ env.VERSION }}_linux_amd64
+            discord_notifier_${{ env.VERSION }}_linux_amd64
