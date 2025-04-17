@@ -6,6 +6,14 @@ import (
 )
 
 func GenerateDefaultConfig(path string) error {
+	dir := path[:len(path)-len("config.yaml")]
+	if _, err := os.Stat(dir); os.IsNotExist(err) {
+		err := os.MkdirAll(dir, os.ModePerm)
+		if err != nil {
+			return err
+		}
+	}
+
 	cfg := Config{
 		WebhookURL: "https://example.com/webhook",
 		AvatarURL:  "",
