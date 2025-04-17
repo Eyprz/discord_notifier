@@ -77,7 +77,7 @@ jobs:
 
       - name: Rename artifact
         run: |
-          mv bin/discord_notifier.out discord_notifier_${{ env.VERSION }}_linux_amd64
+          mv discord_notifier.out discord_notifier_${{ env.VERSION }}_linux_amd64
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
