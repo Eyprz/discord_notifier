@@ -41,6 +41,12 @@ jobs:
       - name: Run tests
         run: make test
 
+      - name: Archive build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: discord-notifier
+          path: ./discord-notifier
+
   release:
     runs-on: ubuntu-latest
     needs: build
@@ -62,6 +68,11 @@ jobs:
         run: |
           git tag ${{ env.VERSION }}
           git push origin ${{ env.VERSION }}
+
+      - name: Upload build artifact to release
+        uses: actions/download-artifact@v3
+        with:
+          name: discord-notifier
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
