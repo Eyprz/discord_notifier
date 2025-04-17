@@ -84,3 +84,5 @@ jobs:
           release_name: Release ${{ env.VERSION }}
           draft: false
           prerelease: false
+          files: |
+            bin/discord_notifier.out#discord_notifier_${{ env.VERSION }}_linux_amd64
